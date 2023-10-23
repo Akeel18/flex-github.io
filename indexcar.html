@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration car</title>
+     
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <style>
+        /* CSS for styling the form and table */
+        body {
+            font-family: Arial, sans-serif;
+            display:flex;
+            justify-content:center;
+        
+            align-items:center;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+       
+       
+       
+ /* Style the title */
+.qrcode-card h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style the description */
+.qrcode-card p {
+    font-size: 16px;
+    color: #666;
+}
+/* Style the QR code div */
+#qrcode {
+    margin-left:40%;
+    width: 200px;
+    height: 200px;
+}
+
+/* Style the container div as a card */
+.qrcode-card {
+    
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    height:250px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+ 
+}
+#qrbtn{
+ display:none;
+}
+.dbtn{
+
+}
+
+ body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],#pas {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+             background-color:gold; 
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border:2px solid white;
+            transition:1s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    select{
+       width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+    
+    }
+  #container{
+   width:50%;
+   border:2px solid black;
+      background: linear-gradient(to bottom, #3498db, #2980b9);
+  }
+  #downloadButton{
+    display:none;
+  }
+  #qrcon{
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+  align-items:center;
+margin-left:20px;
+}
+    @media screen and (max-width: 650px) {
+          body {
+           flex-direction:column;
+           
+        }
+       input[type="text"],
+        input[type="email"] {
+            width: auto;
+           
+        }
+
+        button {
+            background-color: #007BFF;
+          
+        }
+        select{
+          width:auto;
+        }
+        #container{
+         width:auto;
+        }
+        
+    #qrcon{
+     margin-top:20px;
+    
+    }
+    
+ 
+    }
+@media only screen and (max-width: 768px) {
+
+  body {
+           flex-direction:column;
+           
+        }
+       input[type="text"],
+        input[type="email"] {
+            width: auto;
+           
+        }
+
+        button {
+            background-color: #007BFF;
+          
+        }
+        select{
+          width:auto;
+        }
+        #container{
+         width:auto;
+        }
+        
+    #qrcon{
+     margin-top:20px;
+    
+    }
+
+
+}
+@media only screen and (min-width: 350px) {
+
+  body {
+           flex-direction:column;
+           
+        }
+       
+
+
+}
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div><h1>Book A Car</h1></div>
+    
+    <!-- Registration Form -->
+    <div>
+    <form id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Name" required><br><br>
+
+        <label for="email">Email or Phone :</label>
+        <input type="email" id="email" placeholder="Email or Phone" required><br><br>
+        
+        <label for="Car">Car</label>
+        
+        <select id="mySelect">
+          <option value="BMW">BMW</option>
+          <option value="Ford">FORD</option>
+          <option value="Rols">ROLLCE</option>
+        </select>
+        
+        <button type="button" onclick="registerUser()">Book a car</button>
+       
+    </form>
+    </div>
+   </div>
+   
+   
+   <div id="qrcon">
+      <div class="qrcode-card">
+            <h1>Flex cars</h1>
+            <p>Scan the QR code below:</p>
+        <div id="qrcode"></div>
+       
+      </div><br><br>
+      <div class="dbtn">
+       <button id="downloadButton">Download as Image</button>
+       </div>
+  </div>
+   <div class="paaa">
+    <p>Get your car by reaching car showroom using this qr code</p>
+   </div>
+
+
+
+
+
+    <script>
+
+  
+     function generateQRCode(text) {
+    	var qrcode = new QRCode(document.getElementById		("qrcode"), {
+        text: text,
+        width: 128,
+        height: 128
+    });
+}
+        // Function to register a user and store data in localStorage
+        function registerUser() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const selectElement = document.getElementById("mySelect");
+            const selectedValue = selectElement.value;
+            const selectedText = selectElement.options[selectElement.selectedIndex].text;
+            const d = new Date();
+           var ds = d.toDateString();
+            
+            var textToEncode =`The user name and email are ${name} + " "+${email}+" "+${selectedText}+" "+${ds}`;
+
+           const qr = document.getElementById("qrcon");
+                
+            if (name && email) {
+            
+                
+                // Create a user object
+                const user = { name, email,selectedText};
+
+                // Retrieve existing users or initialize an empty array
+                const users = JSON.parse(localStorage.getItem("users")) || [];
+
+                // Add the new user to the array
+                users.push(user);
+
+                // Store the updated array in localStorage
+                localStorage.setItem("users", JSON.stringify(users));
+               
+                // Clear the form fields
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                
+
+            
+              generateQRCode(textToEncode); 
+              document.getElementById("downloadButton").style.display = "block"; 
+              qr.style.display="block";
+
+                
+            }
+             else {
+                alert("Name and Email are required fields.");
+                
+            }
+        }
+
+// script.js
+
+// ... (QR code generation and other code)
+
+// Function to capture the card as an image and trigger download
+document.getElementById("downloadButton").addEventListener("click", function () {
+    html2canvas(document.querySelector(".qrcode-card")).then(function(canvas) {
+        var link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = "qrcode_card_flex.png";
+        link.click();
+    });
+});
+
+        
+
+
+   
+
+ 
+
+    </script>
+</body>
+</html>
+

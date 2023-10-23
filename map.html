@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StreetMap</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Include Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+    <!-- Style the map container -->
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>OpenStreetMap </h1>
+
+    <!-- Create a container for the map -->
+    <div id="map"></div>
+   <p>You can explore Your destinations here..</p>
+<p>This map is only for serching and exploring your places where you would like to go in future.and also it is an additional service here..</p>
+
+    <!-- Initialize the map with Leaflet -->
+    <script>
+         var map = L.map('map').setView([8.58809037557962, 81.21400110463624], 7); // Set coordinates for Sri Lanka and zoom level
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map); // Add OpenStreetMap layer
+        
+        function show(){
+           var pathCoordinates = [
+            [51.505, -0.09],
+            [51.51, -0.1],
+            [51.51, -0.12]
+        ];
+
+        // Create a polyline and add it to the map
+        var path = L.polyline(pathCoordinates, { color: 'blue' }).addTo(map);
+        
+        }
+         var markerCoordinates = [8.600121714501185, 81.19338242530158];
+
+        // Create a marker and add it to the map
+        var marker = L.marker(markerCoordinates).addTo(map);
+
+        // Add a pop-up with extra information
+        marker.bindPopup("<b>ATI</b><br>Sri Lanka Institute of Advanced Technological Education - Trincomalee").openPopup();
+        
+    </script>
+</body>
+</html>
+

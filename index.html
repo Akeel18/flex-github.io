@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project</title>
+    <style>
+    
+    body {
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ensure the body takes up the full viewport height */
+            margin: 0; /* Remove default margin to prevent unwanted spacing */
+        }
+
+        /* Style the button */
+        button {
+            background-color: #008CBA; /* Set the default background color for the button */
+            color: #fff; /* Set text color */
+            padding: 10px 20px; /* Add padding for better appearance */
+            border: none; /* Remove the default button border */
+            cursor: pointer; /* Change cursor on hover to indicate interactivity */
+            transition: background-color 0.3s; /* Add a smooth transition effect for the background color change */
+ padding: 20px 40px;
+        }
+
+        /* Add hover effect to the button */
+        button:hover {
+            background-color: #005B7D; /* Change the background color on hover */
+        }
+    </style>
+</head>
+<body>
+    <button id="myButton">Open my Project</button>
+
+    <div id="myDiv"> 
+
+        <p>This is a Individual Project.</p>
+
+
+    </div>
+
+ <script>
+        // JavaScript code to open a web page when the button is clicked
+        const button = document.getElementById("myButton");
+        
+        // Define the URL of the web page you want to open
+        const webpageURL = "indexmain.html"; // Replace with your desired URL
+
+        // Add a click event listener to the button
+        button.addEventListener("click", function() {
+            // Open the web page in a new tab
+            window.open(webpageURL, "_blank");
+        });
+    </script>
+
+
+
+
+
+
+</body>
+</html>
+

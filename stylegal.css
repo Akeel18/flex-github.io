@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+}
+
+.gallery {
+    width: auto;
+    height:205;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide img {
+    
+}
+
